@@ -85,6 +85,7 @@ public class RoomManager implements IDataResource.roomManager {
                     AppController.getRoomDatabase().getPostsDao().updateTour(id, posts_room.getBody());
                     return null;
                 }
+                //rahi
             }
         }.execute();
     }
