@@ -88,4 +88,15 @@ public class RoomManager implements IDataResource.roomManager {
             }
         }.execute();
     }
+
+    @Override
+    public void singleRowPost(Posts posts) {
+        new AsyncTask<Void, Void, Void>() {
+            @Override
+            protected Void doInBackground(Void... voids) {
+                AppController.getRoomDatabase().getPostsDao().updateSinglePost(posts);
+                return null;
+            }
+        }.execute();
+    }
 }
