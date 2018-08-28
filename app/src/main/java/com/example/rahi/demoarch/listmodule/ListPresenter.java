@@ -86,6 +86,7 @@ public class ListPresenter implements Presenter {
                             //roomManager.updatePost(id, posts.getBody());
                             roomManager.singleRowPost(posts);
                             view.notifyList();
+                            
                         }
                     });
 
