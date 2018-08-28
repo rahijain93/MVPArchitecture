@@ -55,6 +55,8 @@ public interface IDataResource {
 
         void updatePost(int id, String body);
 
+        void singleRowPost(Posts posts);
+
     }
 
 

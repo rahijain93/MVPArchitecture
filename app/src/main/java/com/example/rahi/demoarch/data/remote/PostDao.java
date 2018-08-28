@@ -6,6 +6,7 @@ import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.OnConflictStrategy;
 import android.arch.persistence.room.Query;
+import android.arch.persistence.room.Update;
 
 import com.example.rahi.demoarch.model.Posts;
 
@@ -28,5 +29,9 @@ public interface PostDao {
 
     @Query("UPDATE Posts SET body = :body  WHERE id = :id")
     void updateTour(int id, String body);
+
+    @Update
+    void updateSinglePost(Posts posts);
+
 
 }

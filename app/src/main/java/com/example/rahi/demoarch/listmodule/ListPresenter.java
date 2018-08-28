@@ -83,7 +83,8 @@ public class ListPresenter implements Presenter {
                             posts.setBody(posts.getBody() + " HEART CLICLKED");
                             Log.v("HEART CLICLKED", "HEART CLICLKED-----" + posts.getBody().contains("HEART CLICLKED"));
 
-                            roomManager.updatePost(id, posts.getBody());
+                            //roomManager.updatePost(id, posts.getBody());
+                            roomManager.singleRowPost(posts);
                             view.notifyList();
                         }
                     });
