@@ -9,8 +9,6 @@ import retrofit2.http.GET;
 
 public interface IApiServices {
 
-
-
     @GET("/posts")
     Call<List<Posts>> getList();
 

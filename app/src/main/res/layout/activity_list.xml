@@ -18,9 +18,9 @@
             name="contextActivity"
             type="com.example.rahi.demoarch.listmodule.ActivityList" />-->
 
-        <variable
-            name="viewModel"
-            type="com.example.rahi.demoarch.listmodule.PostsViewModel" />
+        <!--<variable-->
+            <!--name="viewModel"-->
+            <!--type="com.example.rahi.demoarch.listmodule.PostsViewModel" />-->
 
     </data>
 

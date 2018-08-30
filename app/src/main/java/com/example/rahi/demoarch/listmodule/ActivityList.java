@@ -37,23 +37,14 @@ public class ActivityList extends AppCompatActivity implements IListActivityCont
     ListAdapter listAdapter;
     LinearLayoutManager linearLayoutManager;
     int firstPosition = 0;
-    private PostsViewModel viewModel;
 
-    //ObservableArrayList&lt;Pos&gt;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // setContentView(R.layout.activity_list);
         activityListBinding = DataBindingUtil.setContentView(this, R.layout.activity_list);
         presenter = new ListPresenter(AllRepositoryProvider.getRemoteDataRepo(), this, AllRepositoryProvider.getSharedPrefRepo(this), AllRepositoryProvider.getFileHandlerRepo(), AllRepositoryProvider.getRoomManagerRepo());
 
         setAdapter();
         presenter.onCreate();
-
-        //Log.v("listResponsePojos","listResponsePojos---List----"+listResponsePojos);
-
-        //Binding Adapter things
-        /*viewModel = new PostsViewModel();
-        viewModel.setPosts(new ArrayList<Posts>());*/
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             activityListBinding.recList.setOnScrollChangeListener(new View.OnScrollChangeListener() {
@@ -74,7 +65,6 @@ public class ActivityList extends AppCompatActivity implements IListActivityCont
         activityListBinding.fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //linearLayoutManager.scrollToPositionWithOffset(0, 0);
                 activityListBinding.recList.smoothScrollToPosition(0);
             }
         });
@@ -84,8 +74,6 @@ public class ActivityList extends AppCompatActivity implements IListActivityCont
         activityListBinding.swiperefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-//                responsePojoObservableArrayList.clear();
-//                listAdapter.notifyDataSetChanged();
                 presenter.onCreate();
                 activityListBinding.swiperefresh.setRefreshing(false);
             }
@@ -93,13 +81,6 @@ public class ActivityList extends AppCompatActivity implements IListActivityCont
 
     }
 
-//    @BindingAdapter({"bind:list", "bind:context"})
-//    public static void generateList(RecyclerView recyclerView, ObservableArrayList<Posts> listResponsePojos, ActivityList context) {
-//        recyclerView.addItemDecoration(new DividerItemDecorator(ContextCompat.getDrawable(context, R.drawable.line_rect)));
-//        // recyclerView.addItemDecoration(new DividerItemDecorator(context.getResources().getDrawable(R.drawable.line_rect)));
-//        recyclerView.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
-//        recyclerView.setAdapter(new ListAdapter(listResponsePojos, context, (ItemclickListener) context));
-//    }
 
     @Override
     public void onItemclick(final View view, final int position, int id) {
@@ -110,7 +91,6 @@ public class ActivityList extends AppCompatActivity implements IListActivityCont
             case R.id.delete:
                 responsePojoObservableArrayList.remove(position);
                 if (listAdapter != null) {
-
                     listAdapter.notifyItemRemoved(position);
                     listAdapter.notifyItemRangeChanged(position, responsePojoObservableArrayList.size());
                 }
@@ -124,7 +104,6 @@ public class ActivityList extends AppCompatActivity implements IListActivityCont
                 break;
 
             case R.id.heart_img:
-                //Toast.makeText(this, "heart_img Case--- "+position, Toast.LENGTH_SHORT).show();
                 Toast.makeText(this, "heart_img Case--- " + view.getId(), Toast.LENGTH_SHORT).show();
 
                 if (responsePojoObservableArrayList.get(position).getBody().contains("HEART CLICLKED") || listAdapter.gethearthashmap().containsKey(position)) {
@@ -141,7 +120,6 @@ public class ActivityList extends AppCompatActivity implements IListActivityCont
                         if (response != null)
                             ((ImageView) view).setImageResource(R.drawable.heart_red);
                         listAdapter.gethearthashmap().put(position, true);
-                        //notifyList();
                         presenter.getAllPosts();
                     }
 
@@ -150,7 +128,6 @@ public class ActivityList extends AppCompatActivity implements IListActivityCont
                         Toast.makeText(getApplicationContext(), "Heart IMage error " + message, Toast.LENGTH_SHORT).show();
                     }
                 }, responsePojoObservableArrayList.get(position).getId());
-               //notifyList();
                 break;
 
             default:
@@ -186,15 +163,7 @@ public class ActivityList extends AppCompatActivity implements IListActivityCont
 
     @Override
     public void setListAdapter(List<Posts> list) {
-        Log.v("onSuccess", "response-----list------" + list);
-//        responsePojoObservableArrayList.clear();
-//        listAdapter = new ListAdapter(responsePojoObservableArrayList, this, this);
-//        linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
-//        responsePojoObservableArrayList.addAll(list);
-//        activityListBinding.recList.addItemDecoration(new DividerItemDecorator(ContextCompat.getDrawable(this, R.drawable.line_rect)));
-//        activityListBinding.recList.setLayoutManager(linearLayoutManager);
-//        activityListBinding.recList.setAdapter(listAdapter);
-
+       // Log.v("onSuccess", "response-----list------" + list);
         responsePojoObservableArrayList.addAll(list);
         notifyList();
 
@@ -217,8 +186,6 @@ public class ActivityList extends AppCompatActivity implements IListActivityCont
 
     @Override
     public void notifyList() {
-
-
         runOnUiThread(new Runnable() {
             @Override
             public void run() {

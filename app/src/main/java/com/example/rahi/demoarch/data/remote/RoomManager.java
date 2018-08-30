@@ -23,7 +23,7 @@ public class RoomManager implements IDataResource.roomManager {
             protected Void doInBackground(Void... voids) {
                 postsList = AppController.getRoomDatabase().getPostsDao().getListOfPosts();
                 listRoomFetchListener.fetchSuccessfull(postsList);
-                Log.v("onSuccess", "response--------RoomManager--getAllProducts------" + postsList);
+               // Log.v("onSuccess", "response--------RoomManager--getAllProducts------" + postsList);
                 return null;
             }
         }.execute();
@@ -77,7 +77,7 @@ public class RoomManager implements IDataResource.roomManager {
 
                 if (!body.equals("")) {
                     AppController.getRoomDatabase().getPostsDao().updateTour(id, body);
-                    Log.v("updateTour", "updateTour----" + body.contains("HEART"));
+                    //Log.v("updateTour", "updateTour----" + body.contains("HEART"));
                     return null;
                 } else {
                     posts_room = AppController.getRoomDatabase().getPostsDao().getRowIdObject(id);
@@ -85,11 +85,11 @@ public class RoomManager implements IDataResource.roomManager {
                     AppController.getRoomDatabase().getPostsDao().updateTour(id, posts_room.getBody());
                     return null;
                 }
-                //rahi
             }
         }.execute();
     }
 
+    @SuppressLint("StaticFieldLeak")
     @Override
     public void singleRowPost(Posts posts) {
         new AsyncTask<Void, Void, Void>() {

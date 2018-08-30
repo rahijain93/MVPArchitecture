@@ -11,18 +11,6 @@ public class SharedPreferencesRepository implements IDataResource.sharedPref {
     public SharedPreferencesRepository(Context context) {
         sharedPreferences = context.getSharedPreferences(prefName, Context.MODE_PRIVATE);
     }
-
-
-    @Override
-    public void putStringShatrdPref(String key, String value) {
-        sharedPreferences.edit().putString(key, value).apply();
-    }
-
-    @Override
-    public String getStringShatrdPref(String key, String defvalue) {
-        return sharedPreferences.getString(key, defvalue);
-    }
-
     @Override
     public void putIntShatrdPref(String key, int value) {
         sharedPreferences.edit().putInt(key, value).apply();
@@ -32,5 +20,4 @@ public class SharedPreferencesRepository implements IDataResource.sharedPref {
     public int getIntShatrdPref(String key, int defvalue) {
         return sharedPreferences.getInt(key, defvalue);
     }
-
 }

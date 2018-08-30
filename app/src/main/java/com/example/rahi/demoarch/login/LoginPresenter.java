@@ -30,21 +30,13 @@ public class LoginPresenter implements IloginActivityContract.presenter {
                 } else {
                     navigation.gotoListActivity();
                 }
-
-
-
-
             }
 
             @Override
             public void onPermissionDenied() {
-                view.showToast("All permission needed to go further");
+                view.showToast("All permission needed to go further.");
             }
         });
-
-
-
-
     }
 
 

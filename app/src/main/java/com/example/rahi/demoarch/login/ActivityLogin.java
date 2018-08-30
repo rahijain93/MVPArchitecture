@@ -35,7 +35,6 @@ public class ActivityLogin extends AppCompatActivity implements IloginActivityCo
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.activity_login2);
         activityLogin2Binding = DataBindingUtil.setContentView(this, R.layout.activity_login2);
         presenter = new LoginPresenter(AllRepositoryProvider.getRemoteDataRepo(), this, this, this);
 
@@ -51,15 +50,6 @@ public class ActivityLogin extends AppCompatActivity implements IloginActivityCo
     }
 
 
-    @Override
-    public void showProgress() {
-
-    }
-
-    @Override
-    public void hideProgress() {
-
-    }
 
     @Override
     public boolean isNameempty() {
@@ -98,10 +88,7 @@ public class ActivityLogin extends AppCompatActivity implements IloginActivityCo
         if (checkPermissions(permission))
             permissioncallback.onPermissionGranted();
         else {
-
-
         }
-
     }
 
 
@@ -116,8 +103,8 @@ public class ActivityLogin extends AppCompatActivity implements IloginActivityCo
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
 
 
-                    Log.v("permissionslist", "permissionslist" + permissions);
-                    Log.v("permissionslist", "grantResults" + grantResults);
+//                    Log.v("permissionslist", "permissionslist" + permissions);
+//                    Log.v("permissionslist", "grantResults" + grantResults);
 
                     // permission was granted, yay! Do the
                     // contacts-related task you need to do.
@@ -153,7 +140,7 @@ public class ActivityLogin extends AppCompatActivity implements IloginActivityCo
             }
         }
 
-        Log.v("checkPermissions", "checkPermissions----------" + listPermissionsNeeded.toString());
+        //Log.v("checkPermissions", "checkPermissions----------" + listPermissionsNeeded.toString());
         if (!listPermissionsNeeded.isEmpty()) {
             ActivityCompat.requestPermissions(this, listPermissionsNeeded.toArray(new String[listPermissionsNeeded.size()]), permissioncode);
             return false;
@@ -165,7 +152,7 @@ public class ActivityLogin extends AppCompatActivity implements IloginActivityCo
     private String[] getPermissionArray(String permission) {
 
 
-        Log.v("getPermissionArray", "getPermissionArray");
+        //Log.v("getPermissionArray", "getPermissionArray");
         switch (permission) {
             case "storage":
                 return new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE};

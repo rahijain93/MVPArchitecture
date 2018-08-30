@@ -4,9 +4,7 @@ public interface IloginActivityContract {
 
 
     interface View {
-        void showProgress();
 
-        void hideProgress();
 
         boolean isNameempty();
 

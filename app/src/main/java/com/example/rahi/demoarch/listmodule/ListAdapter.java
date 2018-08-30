@@ -33,12 +33,9 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.TagViewHolder>
         this.responsePojoObservableArrayList = responsePojoObservableArrayList;
         this.count = responsePojoObservableArrayList.size();
         Log.v("responsePojoObservab", "responsePojoObservableArrayList-size---" + responsePojoObservableArrayList.size());
-
-
         //to make const empty do this
         // this.responsePojoObservableArrayList= new ObservableArrayList<>();
         //and initilaize all things u want here
-
     }
 
     @Override
@@ -59,27 +56,13 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.TagViewHolder>
             @Override
             public void onClick(View v) {
                 itemclickListener.onItemclick(v, position, tagWithFullInfoPojo.getId());
-
-                //((ActivityList)context).onItemclick(v, position, tagWithFullInfoPojo.getId());  working properly....
-
-//                responsePojoObservableArrayList.remove(position);
-//                notifyItemRemoved(position);
-//                notifyItemRangeChanged(position,count);
-//                Toast.makeText(context, "List Size---responsePojoObservableArrayList-------" + responsePojoObservableArrayList.size() + "----position" + position, Toast.LENGTH_SHORT).show();
-                //Toast.makeText(context, "ItemRemoved-ID---" + tagWithFullInfoPojo.getId(), Toast.LENGTH_SHORT).show();
-            }
+                }
         });
 
 
         holder.binding.heartImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-//                if (heartMap.containsKey(position) || tagWithFullInfoPojo.getBody().contains("HEART CLICLKED") ) {
-//                    ((ImageView) v).setImageResource(R.drawable.heart);
-//                    heartMap.remove(position);
-//                    itemclickListener.onItemclick(v, position, tagWithFullInfoPojo.getId());
-//                } else
                     itemclickListener.onItemclick(v, position, tagWithFullInfoPojo.getId());
             }
         });
@@ -123,12 +106,6 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.TagViewHolder>
 
   //Style to make constructor empty...initiali aal the things we pass in constructor like below..create set methods for them just like below..and only initialize them in constructor
 
-    public void setObsList(ObservableArrayList<Posts> listResponsePojos){
-//  this.responsePojoObservableArrayList = listResponsePojos;
-
-
-
-    }
 
 
 }

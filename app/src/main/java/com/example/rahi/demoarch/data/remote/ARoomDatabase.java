@@ -12,7 +12,7 @@ public abstract class ARoomDatabase extends RoomDatabase {
 
     public abstract PostDao getPostsDao();
 
-    private static volatile ARoomDatabase roomDatabase;
+    private static  ARoomDatabase roomDatabase;
 
     public static synchronized ARoomDatabase getRoomDatabase(Context context)
     {

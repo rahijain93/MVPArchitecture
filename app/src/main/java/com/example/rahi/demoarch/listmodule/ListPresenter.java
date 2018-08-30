@@ -59,14 +59,10 @@ public class ListPresenter implements Presenter {
                     view.setListAdapter(list);
                 }
             });
-
-
     }
-
 
     @Override
     public void heartService(final IDataResource.RemoteCallback<List<Posts>> remoteCallback, int id) {
-
 
         remote.getListUser(new IDataResource.RemoteCallback<List<Posts>>() {
 
@@ -83,14 +79,10 @@ public class ListPresenter implements Presenter {
                             posts.setBody(posts.getBody() + " HEART CLICLKED");
                             Log.v("HEART CLICLKED", "HEART CLICLKED-----" + posts.getBody().contains("HEART CLICLKED"));
 
-                            //roomManager.updatePost(id, posts.getBody());
                             roomManager.singleRowPost(posts);
                             view.notifyList();
-
                         }
                     });
-
-
                 }
             }
 
@@ -99,8 +91,6 @@ public class ListPresenter implements Presenter {
                 remoteCallback.onFailure(message);
             }
         });
-
-
     }
 
     @Override
@@ -126,7 +116,6 @@ public class ListPresenter implements Presenter {
     @Override
     public void updateRow(int id) {
         roomManager.updatePost(id, "");
-       // view.notifyList();
     }
 
     @Override
@@ -136,13 +125,7 @@ public class ListPresenter implements Presenter {
             public void fetchSuccessfull(List<Posts> list) {
 
                 view.setListAdapter(list);
-                Log.v("onSuccess", "response-----getAllPosts------" + list);
             }
         });
     }
-
-    private void notifyAdapterList(){
-        view.notifyList();
-    }
-
 }
