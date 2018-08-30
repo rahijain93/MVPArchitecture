@@ -104,7 +104,7 @@ public class ActivityList extends AppCompatActivity implements IListActivityCont
                 break;
 
             case R.id.heart_img:
-                Toast.makeText(this, "heart_img Case--- " + view.getId(), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(this, "heart_img Case--- " + view.getId(), Toast.LENGTH_SHORT).show();
 
                 if (responsePojoObservableArrayList.get(position).getBody().contains("HEART CLICLKED") || listAdapter.gethearthashmap().containsKey(position)) {
                     ((ImageView) view).setImageResource(R.drawable.heart);
